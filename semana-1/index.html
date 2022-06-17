@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width='device-width', initial-scale=1.0">
+    <title>Desafio Semana 1 - Mach1</title>
+    <style>
+        body{
+            background-color: #0F0C33;
+        }
+        @keyframes andar {
+            from{ bottom:0px }
+            to{ bottom: calc(100% - 20px);}
+        }
+        @keyframes decolar {
+            0%, 100%{transform: rotate(-90deg) scale(1);}
+            30%{transform: rotate(-90deg) scale(10) translateY(-1px);}
+        }
+        #aviao{
+            position: absolute;
+            bottom: 0;
+            transform: rotate(-90deg);
+            animation:andar 10s forwards, decolar 5s 2s forwards;
+        }
+        #pista{
+            margin: 0 auto;
+            position: relative;
+            width: 20px;
+            height: 100vh;
+            border-left: 2px dashed #FFF ;
+            border-right: 2px dashed #FFF ;
+            color:#C67470;
+        }
+        img{
+            position: absolute;
+            width: 70px;
+            top: 30px;
+            left: 20px;
+        }
+
+        /*Codigo para adaptar emoticons para browser Safari*/
+        @media not all and (min-resolution:.001dpcm) { 
+            #aviao { 
+                transform: rotate(-45deg);
+            }
+            @keyframes decolar {
+                0%, 100%{transform: rotate(-45deg) scale(1);}
+                30%{transform: rotate(-45deg) scale(10);}
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="https://bemach1.com.br/wp-content/uploads/2022/02/Logo-Mach-02.svg" />
+    <div id="pista">
+        <div id="aviao">&#9992</div>
+    </div>
+</body>
+</html>
