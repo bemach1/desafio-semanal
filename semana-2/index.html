@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width='device-width', initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #0F0C33;
+            width: 100vw;
+            height: 100vh;
+            margin:0;
+            padding: 0;
+            overflow: hidden;
+        }
+        @keyframes andar {
+            from{ bottom:0px }
+            to{ bottom: calc(50vh - 20px);}
+        }
+        @keyframes decolar {
+            0%{font-size: 14px;}
+            50%, 100%{
+                font-size: 50px;
+                width: 70px;
+                height: 70px;
+            }
+        }
+        @keyframes esconder-pista {
+            0%{
+                height: 50vh;
+            }
+            100%{
+                height: 0;
+            }
+        }
+        
+        #aviao{
+            position: absolute;
+            transform: rotate(-90deg);
+            text-align: center;
+            font-size: 14px;
+            color:#C67470;
+            width: 25px;
+            height: 25px;
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            animation:andar 8s forwards cubic-bezier(.49,1.07,.61,.96), decolar 5s 2s forwards ;
+        }
+
+
+        #pista{
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            width: 20px;
+            height: 50vh;
+            border-left: 2px dashed #FFF ;
+            border-right: 2px dashed #FFF ;
+            bottom: 0;
+            animation: esconder-pista 4s 4s forwards cubic-bezier(.49,1.07,.61,.96);
+        }
+
+        #base{
+            width: 100vw;
+            height: 50vh;
+            position: absolute;
+            background-color: #232323;
+            bottom: 0;
+            animation: esconder-pista 4s 4s forwards cubic-bezier(.49,1.07,.61,.96);
+        }
+
+        /*Codigo para adaptar para browser Safari*/
+        @media not all and (min-resolution:.001dpcm) { 
+            #aviao { 
+                transform: rotate(-45deg);
+            }
+        }
+
+        @keyframes movimento-nuvem {
+            from{
+                transform: translateY(-25px);
+            }
+            to{
+                transform: translateY(calc(100vh + 25px));
+            }
+        }
+
+        .nuvem{
+            position: absolute;
+            margin-left:var(--spX);
+            width: 20px;
+            transform: translateY(-25px);
+            height: 15px;
+            border-radius: 100%;
+            background: #FFF;
+            opacity: 40%;
+            box-shadow: 10px 5px #FFF, 
+                        0px 6px #FFF,
+                        -10px 5px #FFF;
+            animation: movimento-nuvem 5s var(--d) infinite cubic-bezier(.63,.46,1,.67);
+        }
+    </style>
+</head>
+<body>
+    <!--INICIO NUVENS-->
+        <div class="nuvem" style="--spY:100px;--spX:70vw;--d:3s;"></div>
+        <div class="nuvem" style="--spY:80px;--spX:90vw;--d:11s;"></div>
+        <div class="nuvem" style="--spY:200px;--spX:50vw;--d:9s;"></div>
+        <div class="nuvem" style="--spY:10px;--spX:15vw;--d:15s;"></div>
+        <div class="nuvem" style="--spY:100px;--spX:80;--d:7s;"></div>
+    <!--FIM NUVENS-->
+
+    <div id="base"></div>
+    <div id="pista"></div>
+    <div id="aviao">&#9992</div>
+</body>
+</html>
